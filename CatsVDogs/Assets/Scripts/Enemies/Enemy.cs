@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public int health = 100;
     public float speed = 5f;
+    private EnemySpawner es;
 
     void Update()
     {
@@ -22,6 +23,11 @@ public class Enemy : MonoBehaviour
         health -= damage;
 
         if (health <= 0)
+        {
+            es.EnemyKilled();
             Destroy(this.gameObject);
+        }
     }
+
+    public void SetEnemySpawner(EnemySpawner enemySpawner){ es = enemySpawner; }
 }

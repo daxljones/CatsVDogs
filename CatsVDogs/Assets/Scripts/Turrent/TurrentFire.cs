@@ -12,7 +12,7 @@ public class TurrentFire : MonoBehaviour
 
     void Start()
     {
-        timer = fire_rate;
+        timer = 0;
     }
 
     void Update()
