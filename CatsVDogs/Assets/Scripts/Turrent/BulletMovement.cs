@@ -9,7 +9,6 @@ public class BulletMovement : MonoBehaviour
 
     void Update()
     {
-        // transform.position += transform.up * speed * Time.deltaTime;
 
         if(Vector3.Distance(Vector3.zero, transform.position) > 30)
             Destroy(this.gameObject);
@@ -23,8 +22,11 @@ public class BulletMovement : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
        var e =  col.gameObject.GetComponent<Enemy>();
-       e.takeDamage(damage);
-       Destroy(this.gameObject);
-       Debug.Log("Hit");
+       if(e != null)
+       {
+            e.takeDamage(damage);
+            Destroy(this.gameObject);
+            Debug.Log("Hit");
+       }
     }
 }

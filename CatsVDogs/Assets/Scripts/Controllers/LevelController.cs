@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 public enum RoundStatus{Playing, Break}
@@ -110,6 +111,13 @@ public class LevelController : MonoBehaviour
     { 
         round_status = RoundStatus.Break; 
         timer = break_timer;
+    }
+
+    public void EndGame()
+    {
+        round_status = RoundStatus.Break; 
+        timer = 999999;
+        Debug.Log("You Lost!");
     }
 
 

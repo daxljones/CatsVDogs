@@ -19,13 +19,19 @@ public class TurrentFire : MonoBehaviour
     {
         timer -= Time.deltaTime;
         if(timer < 0)
-        {
-            GameObject currentBullet = Instantiate(bullet);
-            currentBullet.transform.position = Vector3.zero;
-            currentBullet.transform.rotation = transform.rotation;
-            currentBullet.GetComponent<BulletMovement>().SetDamage(bullet_damage);
-            currentBullet.GetComponent<Rigidbody2D>().velocity = currentBullet.transform.up * speed;
-            timer = fire_rate;
+        {   
+            bool pointing_left = transform.rotation.eulerAngles.z > 60 && transform.rotation.eulerAngles.z < 130;
+            bool pointing_right = transform.rotation.eulerAngles.z > 230 && transform.rotation.eulerAngles.z < 305;
+
+            if(pointing_left || pointing_right)
+            {
+                GameObject currentBullet = Instantiate(bullet);
+                currentBullet.transform.position = Vector3.zero;
+                currentBullet.transform.rotation = transform.rotation;
+                currentBullet.GetComponent<BulletMovement>().SetDamage(bullet_damage);
+                currentBullet.GetComponent<Rigidbody2D>().velocity = currentBullet.transform.up * speed;
+                timer = fire_rate;
+            }
         }
     }
 }
