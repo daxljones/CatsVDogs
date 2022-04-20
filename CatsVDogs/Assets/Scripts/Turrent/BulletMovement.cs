@@ -26,7 +26,6 @@ public class BulletMovement : MonoBehaviour
        {
             e.takeDamage(damage);
             Destroy(this.gameObject);
-            Debug.Log("Hit");
        }
     }
 }

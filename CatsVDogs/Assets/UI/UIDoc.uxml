@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:GroupBox style="align-items: stretch; width: 2730px; height: 97px; flex-direction: row; justify-content: flex-start;">
+        <ui:Label text="Credits : 0" display-tooltip-when-elided="true" name="Credits" style="height: 22px; width: 98px; -unity-text-align: middle-center; left: 100px; top: 50px; position: absolute; font-size: 50px; margin-left: 20px;" />
+        <ui:Label text="0&#10;" display-tooltip-when-elided="true" name="Round" style="top: 50px; left: 50%; -unity-text-align: middle-left; position: absolute; width: 80px; right: 50%; font-size: 100px;" />
+        <ui:Label text="0" display-tooltip-when-elided="true" name="RemainingEnemies" style="right: 50px; top: 25px; position: absolute; font-size: 50px;" />
+    </ui:GroupBox>
+</ui:UXML>
