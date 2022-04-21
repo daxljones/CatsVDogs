@@ -10,6 +10,8 @@ public enum RoundStatus{Playing, Break}
 
 public class LevelController : MonoBehaviour
 {
+
+    public UIController uc;
     private int round;
     RoundStatus round_status;
     public float break_timer = 10f;
@@ -82,6 +84,7 @@ public class LevelController : MonoBehaviour
         SendEnemyCountToEnemySpawner();
         round_status = RoundStatus.Playing;
         Debug.Log("Starting Round " + round + "!");
+        uc.SetRound(round);
     }
 
 
@@ -103,6 +106,13 @@ public class LevelController : MonoBehaviour
         }
 
         enemy_spawner.PrepareEnemySpawner(list_to_spawn, total_to_spawn);
+        uc.SetRemainingEnemies(total_to_spawn);
+        /**
+
+        TODO REMEMBER TO ADD THE CREDIT FUNCTIONALITY TO BE ABLE TO PRINT IT
+
+        
+        **/
     }
 
 
