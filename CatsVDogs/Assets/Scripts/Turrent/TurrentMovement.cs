@@ -8,10 +8,10 @@ public class TurrentMovement : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetMouseButton(0))
+        if(Input.touchCount > 0)
         {
-            var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            var dir = mousePos.x >= 0 ? -1 : 1;
+            var touchPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+            var dir = touchPos.x >= 0 ? -1 : 1;
             
             var rotation = Vector3.forward * speed * Time.deltaTime * dir;
             transform.Rotate(rotation); 

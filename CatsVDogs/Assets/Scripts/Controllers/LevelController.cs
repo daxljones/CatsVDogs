@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
-using UnityEditor.UIElements;
+// using UnityEditor.UIElements;
 using UnityEngine;
 
 public enum RoundStatus{Playing, Break}
@@ -12,7 +12,7 @@ public class LevelController : MonoBehaviour
 {
 
     public UIController uc;
-    private int round;
+    private int round, credits;
     RoundStatus round_status;
     public float break_timer = 10f;
     private float timer;
@@ -34,6 +34,9 @@ public class LevelController : MonoBehaviour
         enemies.Add("Green", 0);
         enemies.Add("Orange", 0);
         enemies.Add("Black", 0);
+
+        credits = 99999;
+        uc.SetCredits(credits);
 
     }
 
@@ -111,7 +114,7 @@ public class LevelController : MonoBehaviour
 
         TODO REMEMBER TO ADD THE CREDIT FUNCTIONALITY TO BE ABLE TO PRINT IT
 
-        
+
         **/
     }
 
