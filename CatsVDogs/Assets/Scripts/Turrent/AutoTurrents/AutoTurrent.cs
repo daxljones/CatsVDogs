@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class AutoTurrent : MonoBehaviour
@@ -60,11 +62,12 @@ public class AutoTurrent : MonoBehaviour
 
     void SetEnemyTarget()
     {   
-        Collider2D[] potentialTargets;
+        Collider2D[] potential_targets;
+        List<Collider2D> pt_list = new List<Collider2D>();
         float r = 1.0f;
         
         do{ // overlap circle grabs all colliders within it and grows in size until max radius or has and colliders in collection
-            potentialTargets = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), r, 1 << LayerMask.NameToLayer("Enemies"));
+            potential_targets = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), r, 1 << LayerMask.NameToLayer("Enemies"));
             r += 1.0f;
             
             if(r > 20)
@@ -72,17 +75,22 @@ public class AutoTurrent : MonoBehaviour
                 break;
             }
 
-        }while(potentialTargets.Length < 1);  
+            pt_list = potential_targets.ToList<Collider2D>(); // turn to list for RemoveAll function
+            if(on_left)
+                pt_list.RemoveAll(t => t.gameObject.transform.position.x > 0);
+            else
+                pt_list.RemoveAll(t => t.gameObject.transform.position.x < 0);
 
-        target = GetClosestEnemy(potentialTargets);
-
+        }while(pt_list.Count < 1);  
+        
+        target = GetClosestEnemy(pt_list);
     }
 
 
 
 
 
-    GameObject GetClosestEnemy(Collider2D[] resources)
+    GameObject GetClosestEnemy(List<Collider2D> resources)
     {
         GameObject bestTarget = null;
         float closestDistanceSqr = Mathf.Infinity;
@@ -90,6 +98,11 @@ public class AutoTurrent : MonoBehaviour
 
         foreach(Collider2D potentialTarget in resources)
         {
+            if(potentialTarget.transform.position.x > 0 && on_left)
+                continue;
+            else if(potentialTarget.transform.position.x < 0 && !on_left)
+                continue;
+
             Vector3 directionToTarget3 = potentialTarget.gameObject.transform.position - currentPosition;
             Vector2 directionToTarget = new Vector2(directionToTarget3.x, directionToTarget3.y);
             float dSqrToTarget = directionToTarget.sqrMagnitude;
