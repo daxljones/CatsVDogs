@@ -12,11 +12,14 @@ public class LevelController : MonoBehaviour
 {
 
     public UIController uc;
-    private int round, credits;
-    RoundStatus round_status;
-    public float break_timer = 10f;
-    private float timer;
+    public UIMaster uim;
     public EnemySpawner enemy_spawner;
+    public float break_timer = 5f;
+
+
+    private int round, credits;
+    private RoundStatus round_status;
+    private float timer;
 
     private Dictionary<String, int> enemies;
 
@@ -37,7 +40,7 @@ public class LevelController : MonoBehaviour
 
         credits = 99999;
         uc.SetCredits(credits);
-
+        uim.HideMenu(true);
     }
 
 
@@ -59,7 +62,44 @@ public class LevelController : MonoBehaviour
 
 
 
+
+
+
     void StartRound()
+    {
+        SetEnemies();
+        round_status = RoundStatus.Playing;
+        Debug.Log("Starting Round " + round + "!");
+        uc.SetRound(round);
+        uim.HideMenu(true);
+    }
+
+
+
+    public void EndRound()
+    { 
+        round_status = RoundStatus.Break; 
+        uim.BeginMenu();
+        timer = break_timer;
+    }
+
+
+
+    public void EndGame()
+    {
+        round_status = RoundStatus.Break; 
+        timer = 999999;
+        Debug.Log("You Lost!");
+    }
+
+
+
+
+
+
+
+
+    void SetEnemies()
     {
         round++;
 
@@ -85,12 +125,7 @@ public class LevelController : MonoBehaviour
         }
 
         SendEnemyCountToEnemySpawner();
-        round_status = RoundStatus.Playing;
-        Debug.Log("Starting Round " + round + "!");
-        uc.SetRound(round);
     }
-
-
 
 
     void SendEnemyCountToEnemySpawner()
@@ -110,32 +145,28 @@ public class LevelController : MonoBehaviour
 
         enemy_spawner.PrepareEnemySpawner(list_to_spawn, total_to_spawn);
         uc.SetRemainingEnemies(total_to_spawn);
-        /**
-
-        TODO REMEMBER TO ADD THE CREDIT FUNCTIONALITY TO BE ABLE TO PRINT IT
-
-
-        **/
     }
 
 
 
-    public void EndRound()
+
+
+
+
+    
+    public void RemoveCredits(int amount_by)
     { 
-        round_status = RoundStatus.Break; 
-        timer = break_timer;
+        credits -= amount_by; 
+        uc.SetCredits(credits);
     }
-
-    public void EndGame()
-    {
-        round_status = RoundStatus.Break; 
-        timer = 999999;
-        Debug.Log("You Lost!");
+    public void AddCredits(int amount_by)
+    { 
+        credits += amount_by; 
+        uc.SetCredits(credits);
     }
-
-
 
 
     public RoundStatus GetRoundStatus(){ return round_status; }
-
+    
+    public int GetCredits(){ return credits; }
 }

@@ -114,4 +114,6 @@ public class AutoTurrent : MonoBehaviour
         }             
         return bestTarget;
     }
+
+    public void SetSide(bool is_on_left){ on_left = is_on_left; }
 }
