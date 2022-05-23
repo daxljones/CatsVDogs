@@ -35,4 +35,10 @@ public class TurrentFire : MonoBehaviour
             }
         }
     }
+
+
+    public void UpgradeBulletDamage()
+    {
+        bullet_damage += 10;
+    }
 }

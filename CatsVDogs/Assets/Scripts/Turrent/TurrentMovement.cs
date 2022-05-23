@@ -32,6 +32,6 @@ public class TurrentMovement : MonoBehaviour
 
     public void UpgradeRotationSpeed()
     {
-        speed += 50;
+        speed += 25;
     }
 }

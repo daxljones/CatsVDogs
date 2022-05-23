@@ -521,6 +521,7 @@ GameObject:
   - component: {fileID: 188238425}
   - component: {fileID: 188238424}
   - component: {fileID: 188238426}
+  - component: {fileID: 188238427}
   m_Layer: 0
   m_Name: RotationUpgradeButton
   m_TagString: Untagged
@@ -621,6 +622,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &188238427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188238423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbf9dcd3bd6a04e1191ad603d88b5630, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uim: {fileID: 1310115587}
 --- !u!1 &218493700
 GameObject:
   m_ObjectHideFlags: 0
@@ -843,6 +857,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 276858238}
+  - component: {fileID: 276858239}
   m_Layer: 0
   m_Name: UpgradeMaster
   m_TagString: Untagged
@@ -865,6 +880,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &276858239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 276858237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b31043f50d6fb40ec9f743a7c43d05bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turrent_movement: {fileID: 827984526}
+  turrent_fire: {fileID: 827984527}
+  lc: {fileID: 1801321900}
+  credits_for_rotation_upgrade: 50
+  credits_for_bullet_upgrade: 50
+  credits_for_barrel_upgrade: 100
 --- !u!1 &295615866
 GameObject:
   m_ObjectHideFlags: 0
@@ -1175,7 +1208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthbar: {fileID: 573088167}
-  max_health: 200
+  max_health: 500
   should_be_dead: 0
 --- !u!58 &356222213
 CircleCollider2D:
@@ -3516,7 +3549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   atsm: {fileID: 1694757077}
-  um: {fileID: 0}
+  um: {fileID: 276858239}
   menu_display_arrow: {fileID: 222135501}
   exit_button: {fileID: 129875320}
   auto_turrents_button: {fileID: 563719043}
@@ -3767,6 +3800,7 @@ GameObject:
   - component: {fileID: 1515454527}
   - component: {fileID: 1515454529}
   - component: {fileID: 1515454528}
+  - component: {fileID: 1515454530}
   m_Layer: 0
   m_Name: BulletUpgradeButton
   m_TagString: Untagged
@@ -3867,6 +3901,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1515454530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1515454526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c2f77c30dd0e41f990bf1a45048347b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uim: {fileID: 1310115587}
 --- !u!1 &1525979125
 GameObject:
   m_ObjectHideFlags: 0

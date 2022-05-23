@@ -75,12 +75,28 @@ public class UIMaster : MonoBehaviour
 
     public void UpgradeTurrentRotation()
     {
-        um.UpgradeRotationSpeed();
+        bool upgrade_worked = um.UpgradeRotationSpeed();
+        if(upgrade_worked)
+        {
+            ResetMenu();
+        }
+        else
+        {
+            // todo: turn button red
+        }
     }
 
     public void UpgradeTurrentBulletDamage()
     {
-        
+        bool upgrade_worked = um.UpgradeBulletDamage();
+        if(upgrade_worked)
+        {
+            ResetMenu();
+        }
+        else
+        {
+            // todo: turn button red
+        }
     }
 
     public void UpgradeTurrentBarrels()
