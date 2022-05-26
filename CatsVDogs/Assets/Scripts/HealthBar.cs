@@ -14,6 +14,9 @@ public class HealthBar : MonoBehaviour
     {
         float percent_of_health = ((float)current_health)/((float)max_health);
         transform.localScale = new Vector3(percent_of_health * original_scale.x, original_scale.y, original_scale.z); // numbers are the same of original scale except for new x
-        // transform.position = new Vector3(percent_of_health/-2, )
+        if(max_health == current_health)
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

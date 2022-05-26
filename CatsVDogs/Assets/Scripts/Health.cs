@@ -5,10 +5,10 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public HealthBar healthbar;
-    public int max_health = 200;
+    public int max_health;
     public bool should_be_dead = false;
 
-    private int health = 0;
+    private int health;
 
     void Start()
     {
@@ -29,5 +29,12 @@ public class Health : MonoBehaviour
         }
 
         return should_be_dead;
+    }
+
+    public int GetHealth(){ return health; }
+    public void AddHealth(int to_add)
+    { 
+        health += to_add; 
+        healthbar.ResizeHealthBar(max_health, health);
     }
 }

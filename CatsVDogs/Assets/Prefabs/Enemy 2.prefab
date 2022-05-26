@@ -104,6 +104,7 @@ MonoBehaviour:
   health_info: {fileID: 8946675673379670280}
   health: 400
   damage: 50
+  credit_reward: 35
   max_damage_timer: 0.5
   speed: 1
 --- !u!58 &7601017914713257159
@@ -156,7 +157,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthbar: {fileID: 3337156822987241104}
-  health: 400
   max_health: 400
   should_be_dead: 0
 --- !u!1 &8948670379583005317
@@ -256,3 +256,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1c339cf1e06e4be59b91842646c148f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  original_scale: {x: 0, y: 0, z: 0}

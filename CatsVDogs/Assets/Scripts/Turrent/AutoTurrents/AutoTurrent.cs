@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class AutoTurrent : MonoBehaviour
 {   
-
-    private GameObject target;
+    public Health health;
     public GameObject bullet;
 
     public int bullet_damage = 25;
@@ -15,6 +14,9 @@ public class AutoTurrent : MonoBehaviour
     public float look_speed = 100f;
     public float bullet_speed = 5.0f;
     public float fire_rate = 0.5f;
+   
+    private GameObject target;
+    private AutoTurrentSelectionSpot spot_on; // spot the turrent currently resides in
     private float timer;
 
     void Start()
@@ -26,6 +28,12 @@ public class AutoTurrent : MonoBehaviour
 
     void Update()
     {
+        if(health.should_be_dead)
+        {
+            spot_on.TurrentDied();
+            Destroy(this.gameObject);
+        }
+
         if(target == null)
             SetEnemyTarget();
         else    
@@ -116,4 +124,5 @@ public class AutoTurrent : MonoBehaviour
     }
 
     public void SetSide(bool is_on_left){ on_left = is_on_left; }
+    public void SetSlot(AutoTurrentSelectionSpot master_slot){ spot_on = master_slot; }
 }

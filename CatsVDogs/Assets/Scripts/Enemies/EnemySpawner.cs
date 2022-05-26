@@ -65,8 +65,9 @@ public class EnemySpawner : MonoBehaviour
         enemy.transform.position = pos;
         enemy.transform.rotation = Quaternion.LookRotation(Vector3.forward, Vector3.zero - enemy.transform.position);
         enemy.GetComponent<Enemy>().SetEnemySpawner(this);
+        enemy.GetComponent<Enemy>().SetLevelController(lc);
 
-        list_to_spawn[enemy_to_pick][1] -= 1; // decrement count to spawn
+        list_to_spawn[enemy_to_pick][1] -= 1; // decrement count to spawn of specific type
 
         if(list_to_spawn[enemy_to_pick][1] == 0)
             list_to_spawn.RemoveAt(enemy_to_pick);

@@ -8,16 +8,19 @@ public class Enemy : MonoBehaviour
     private EnemySpawner es;
     private GameObject currently_touching;
 
-    public Health health_info;
-    public int health = 100;
-    public int damage = 50;
-    public float max_damage_timer = 0.5f;
-    public float speed = 5f;
-
     private int max_health;
     private float damage_timer;
     private bool attacking = false;
 
+    public LevelController lc;
+    public Health health_info;
+    public int health = 100;
+    public int damage = 50;
+    public int credit_reward = 0;
+    public float max_damage_timer = 0.5f;
+    public float speed = 5f;
+
+    static int died = 0;
 
     void Start()
     {
@@ -76,6 +79,9 @@ public class Enemy : MonoBehaviour
         if (is_dead)
         {
             es.EnemyKilled();
+            died++;
+            Debug.Log("Died: " + died);
+            lc.AddCredits(credit_reward);
             Destroy(this.gameObject);
         }
     }
@@ -97,4 +103,5 @@ public class Enemy : MonoBehaviour
 
 
     public void SetEnemySpawner(EnemySpawner enemySpawner){ es = enemySpawner; }
+    public void SetLevelController(LevelController level_controller){ lc = level_controller; }
 }

@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 2694153536593865672}
   m_Layer: 0
   m_Name: AutoTurrent
-  m_TagString: Untagged
+  m_TagString: Turrent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -196,11 +196,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e953584c19f4b4c826e60bf706c831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: {fileID: 2694153536593865672}
   bullet: {fileID: 5127612431016948936, guid: f24a529599a3043baab717044120f403, type: 3}
   bullet_damage: 25
   on_left: 1
   look_speed: 100
-  bullet_speed: 5
+  bullet_speed: 10
   fire_rate: 1
 --- !u!1 &2694153538148179709
 GameObject:

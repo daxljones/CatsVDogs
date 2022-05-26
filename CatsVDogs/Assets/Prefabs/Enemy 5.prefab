@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1c339cf1e06e4be59b91842646c148f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  original_scale: {x: 0, y: 0, z: 0}
 --- !u!1 &3152931353433260403
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,6 +202,7 @@ MonoBehaviour:
   health_info: {fileID: 6602314867966426845}
   health: 1000
   damage: 50
+  credit_reward: 100
   max_damage_timer: 0.5
   speed: 5
 --- !u!58 &6720423421220537303

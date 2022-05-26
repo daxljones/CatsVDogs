@@ -29,7 +29,6 @@ public class LevelController : MonoBehaviour
     {
         round = 0;
         timer = break_timer / 2;
-        round_status = RoundStatus.Break;
 
         enemies = new Dictionary<string, int>();
         enemies.Add("Blue", 0);
@@ -38,9 +37,11 @@ public class LevelController : MonoBehaviour
         enemies.Add("Orange", 0);
         enemies.Add("Black", 0);
 
-        credits = 99999;
+        credits = 0;
         uc.SetCredits(credits);
         uim.HideMenu(true);
+
+        StartRound();
     }
 
 
@@ -146,6 +147,7 @@ public class LevelController : MonoBehaviour
         enemy_spawner.PrepareEnemySpawner(list_to_spawn, total_to_spawn);
         uc.SetRemainingEnemies(total_to_spawn);
     }
+
 
 
 

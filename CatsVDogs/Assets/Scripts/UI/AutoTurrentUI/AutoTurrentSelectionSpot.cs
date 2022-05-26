@@ -9,7 +9,8 @@ public class AutoTurrentSelectionSpot : MonoBehaviour
     public LevelController lc;
     public bool on_left;
 
-    public static int creditsNeeded = 10;
+    public static int base_credits_needed = 50;
+    static int num_of_turrents = 1; // starts at 1 for calculating cost purposes
 
     private GameObject current_turrent;
 
@@ -28,16 +29,31 @@ public class AutoTurrentSelectionSpot : MonoBehaviour
 
     void OnMouseUp()
     {
-        if(lc.GetCredits() > creditsNeeded)
+        int credits_needed = base_credits_needed * num_of_turrents;
+        if(lc.GetCredits() >= credits_needed)
         {
             current_turrent = Instantiate(autoturrent_prefab); // create turrent and set its postion to block
             current_turrent.transform.position = transform.position;
             current_turrent.GetComponentInChildren<AutoTurrent>().SetSide(on_left); // set the side its on
-            lc.RemoveCredits(creditsNeeded);
-            creditsNeeded += creditsNeeded; // increase credits needed
+            current_turrent.GetComponentInChildren<AutoTurrent>().SetSlot(this);
+            lc.RemoveCredits(credits_needed);
+            num_of_turrents += 1;
             this.gameObject.SetActive(false);
         }
     }
+
+
+
+
+    public void TurrentDied()
+    {
+        current_turrent = null;
+        num_of_turrents--;
+    }
+
+
+
+
 
     public void Show()
     {
@@ -48,4 +64,5 @@ public class AutoTurrentSelectionSpot : MonoBehaviour
     }
 
     public void Hide(){ this.gameObject.SetActive(false); }
+    
 }
